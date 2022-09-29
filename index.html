@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Boutique vraie de vraie - T-Shirt Futurama</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<main class="container mx-auto">
+  
+  <p class="font-bold text-xl text-center mt-8 mb-32 uppercase">
+    • Boutique •
+    <br />
+    <span class="text-base">vraie de vraie</span>
+  </p>
+  
+  <section class="flex flex-col md:flex-row ">
+    
+    <!-- Gallery -->
+    <div id="gallery" class="md:flex-1 flex flex-col items-center gallery-container overflow-y-scroll">
+        <div class="select-none" style="background-color: #ececec">
+          <img
+            src="http://localhost:3030/product-01-xl.png"
+          />
+        </div>
+        <div class="select-none" style="background-color: #101010">
+          <img
+            src="http://localhost:3030/product-02-xl.jpg"
+          />
+        </div>
+        <div class="select-none">
+          <img
+            src="http://localhost:3030/product-03-xl.jpg"
+            style="width: 100%; height: auto"
+          />
+      </div>
+      
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+      
+      <!-- If we need navigation buttons -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+    <!-- /Gallery -->
+    
+    <!-- Product infos -->
+    <div class="flex-1 md:ml-8 flex flex-col justify-between items-start">
+      
+      <div>
+        <h1 class="text-4xl mt-8 mb-4 font-bold">
+          T-Shirt incroyable
+        </h1>
+        
+        <p class="mb-8">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias atque ducimus, eum eveniet incidunt nulla
+          pariatur quis tenetur ut. Ducimus et facere impedit molestias, quisquam reprehenderit saepe similique tempore
+          ullam?
+        </p>
+        <p class="mb-8">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda doloremque expedita facilis libero, magnam
+          nobis non numquam, odio perferendis porro quibusdam quisquam reprehenderit rerum saepe sequi, sint soluta
+          velit
+          vero.
+        </p>
+        
+      </div>
+      
+      <div class="mt-12 mb-8">
+        <p class="text-2xl mb-8">
+          42,00 €
+        </p>
+        
+        <button type="button" class="bg-slate-900 px-12 py-4 text-white hover:bg-slate-800 transition-colors rounded uppercase tracking-widest">
+          Ajouter au panier
+        </button>
+      </div>
+    </div>
+    <!-- /Product infos -->
+  
+  </section>
+  
+  <h1 class="font-4xl"></h1>
+  
+  <section>
+    <h2 class="text-4xl font-bold mb-8 mt-12">Avis clients</h2>
+    
+    <div class="flex flex-col md:flex-row-reverse">
+      <!-- COMMENT LIST -->
+      <ul id="comments-list" class="flex-1 md:ml-8 overflow-y-scroll overflow-x-hidden">
+        <li class="comment-card">
+          <!-- Header -->
+          <div class="comment-header">
+            <!-- User profile picture -->
+            <img src="http://localhost:3030/profil-zoidberg.jpeg" alt="user profile picture" />
+            
+            <div>
+              <!-- Comment date -->
+              <p class="comment-date">
+                Il y a 3h
+              </p>
+              
+              <!-- Username -->
+              <p class="comment-username">Dr_Zoidberg</p>
+              
+              <!-- Rating -->
+              <ul class="comment-rating">
+                <li class="star star-on"></li>
+                <li class="star star-on"></li>
+                <li class="star star-on"></li>
+                <li class="star star-on"></li>
+                <li class="star star-off"></li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Comment -->
+          <p class="comment-content">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aspernatur at culpa dignissimos fuga
+            inventore, iste libero maxime nam nesciunt nihil odio omnis quibusdam quidem reprehenderit voluptatem
+            voluptatibus voluptatum.
+          </p>
+        </li>
+        
+        <li class="comment-card">
+          <!-- Header -->
+          <div class="comment-header">
+            <!-- User profile picture -->
+            <img src="http://localhost:3030/profil-bender.jpg" alt="user profile picture" />
+            
+            <div>
+              <!-- Comment date -->
+              <p class="comment-date">
+                Il y a 1J
+              </p>
+              
+              <!-- Username -->
+              <p class="comment-username">B_Rodriguez</p>
+              
+              <!-- Rating -->
+              <ul class="comment-rating">
+                <li class="star star-on"></li>
+                <li class="star star-off"></li>
+                <li class="star star-off"></li>
+                <li class="star star-off"></li>
+                <li class="star star-off"></li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Comment -->
+          <p class="comment-content">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aspernatur at culpa dignissimos fuga
+            inventore, iste libero maxime nam nesciunt nihil odio omnis quibusdam quidem reprehenderit voluptatem
+            voluptatibus voluptatum.
+          </p>
+        </li>
+        
+        <li class="comment-card">
+          <!-- Header -->
+          <div class="comment-header">
+            <!-- User profile picture -->
+            <img src="http://localhost:3030/profil-fry.jpg" alt="user profile picture" />
+            
+            <div>
+              <!-- Comment date -->
+              <p class="comment-date">
+                Le 20/09/2022
+              </p>
+              
+              <!-- Username -->
+              <p class="comment-username">Fry</p>
+              
+              <!-- Rating -->
+              <ul class="comment-rating">
+                <li class="star star-on"></li>
+                <li class="star star-on"></li>
+                <li class="star star-on"></li>
+                <li class="star star-on"></li>
+                <li class="star star-on"></li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Comment -->
+          <p class="comment-content">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias animi aspernatur at culpa dignissimos fuga
+            inventore, iste libero maxime nam nesciunt nihil odio omnis quibusdam quidem reprehenderit voluptatem
+            voluptatibus voluptatum.
+          </p>
+        </li>
+      </ul>
+      <!-- /COMMENT LIST -->
+      
+      <!-- FORM -->
+      <form id="review-form" class="flex-1 my-32 md:my-0">
+      
+      </form>
+      <!-- /FORM -->
+    </div>
+  </section>
+</main>
+</body>
+</html>
