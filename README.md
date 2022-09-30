@@ -49,8 +49,7 @@ Jean-Michel, qui travaille à la compta, sait programmer en HTML. Il a donc pré
 
    > **Concepts clés :**
    >
-   > - [Balise `<template>`](https://developer.mozilla.org/fr/docs/Web/HTML/Element/template)
-   > - [Balise `<slot>`](https://developer.mozilla.org/fr/docs/Web/HTML/Element/slot)
+   > - [Balise `<template>`](https://developer.mozilla.org/fr/docs/Web/HTML/Element/template) (vous pouvez récupérer le contenu et le manipuler comme du DOM classique avant de l'append)
    >
    > **Fonctions clés :**
    >
