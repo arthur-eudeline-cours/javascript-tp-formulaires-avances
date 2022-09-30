@@ -18,7 +18,7 @@ Ici, nous allons travailler pour une boutique en ligne. Le client nous demande d
 
 - Un champ `username` pour le pseudonyme de l'utilisateur. Celui-ci sera :
   - **obligatoire**
-  - **devra contenir que des lettres ou des chiffres**
+  - **devra contenir que des lettres**
   - avoir une longueur située entre **5 et 15 caractères**.
 
 - Un champ de `rating` pour la note de l'utilisateur. Celle-ci sera :
