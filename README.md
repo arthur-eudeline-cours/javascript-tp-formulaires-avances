@@ -32,7 +32,7 @@ Jean-Michel, qui travaille à la compta, sait programmer en HTML. Il a donc pré
 
 
 
-## Comment lancer le TP 
+## Comment lancer le TP
 
 - Ouvrez un terminal dans le dossier `api` et lancez les commandes `npm i `, `npm run build` puis la commande `npm run start:prod`. Vous devriez pouvoir ouvrir http://localhost:3030 dans votre navigateur. Vous devriez voir *Hello World!*. L'API servira plus tard dans le TP, mais ce serveur s'occupe aussi de fournir certaines images, il doit donc être lancé.
 - Ouvrez un terminal à la racine du dossier et exécutez la commande `npx serve` et accédez à l'URL http://localhost:3000
@@ -58,6 +58,7 @@ Jean-Michel, qui travaille à la compta, sait programmer en HTML. Il a donc pré
    > - [`element.prepend()`](https://developer.mozilla.org/fr/docs/Web/API/Element/prepend)
    > - [`element.addEventListener()`](https://developer.mozilla.org/fr/docs/Web/API/EventTarget/addEventListener), event `submit` (ouais je suis sympa)
    > - [`event.preventDefault()`](https://developer.mozilla.org/fr/docs/Web/API/Event/preventDefault)
+   > - [`element.cloneNode()`](https://developer.mozilla.org/en-US/docs/Web/API/Node/cloneNode)
 
 
 
