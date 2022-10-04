@@ -65,7 +65,11 @@ Jean-Michel, qui travaille à la compta, sait programmer en HTML. Il a donc pré
 
    1. Validez en temps réel le **format du pseudonyme saisi** par l'utilisateur sans passer par la validation HTML fournie par nativement par l'attribut `pattern`.
    2. **Ajoutez un compteur de caractère en bas à droite de la zone de texte** `content` qui indiquera en temps réel le nombre de caractères présent dans le commentaire.
-   3. Pour le champ `rating`, vous **implémenterez un champ avec 5 icônes d'étoiles**, lorsque l'utilisateur cliquera sur l'une d'elle, cela attribuera une note entre 1 et 5 et remplira l'étoile sélectionnée et les étoiles précédentes. (Vous pourriez le faire uniquement en CSS si vous étiez énervé, mais pour s'entrainer à manipuler le DOM, vous le ferez en JS).
+
+
+   ![Aperçu attendu du champ de note](https://github.com/arthur-eudeline-cours/javascript-tp-formulaires-avances/blob/main/field-screenshot.png?raw=true)
+   
+   4. Pour le champ `rating`, vous **implémenterez un champ avec 5 icônes d'étoiles**, lorsque l'utilisateur cliquera sur l'une d'elle, cela attribuera une note entre 1 et 5 et remplira l'étoile sélectionnée et les étoiles précédentes. (Vous pourriez le faire uniquement en CSS si vous étiez énervé, mais pour s'entrainer à manipuler le DOM, vous le ferez en JS).
 
    > Expression régulière à utiliser pour valider le pseudonyme `/^[a-zA-Z]+$/`, pour voir comment elle fonctionne, insérez-la sur le site [Regxr](https://regexr.com/).
    >
