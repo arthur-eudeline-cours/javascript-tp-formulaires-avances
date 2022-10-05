@@ -46,7 +46,9 @@ Jean-Michel, qui travaille à la compta, sait programmer en HTML. Il a donc pré
 
 
 
-## 
+## Comment mettre à jour le code du TP
+
+Ouvrez un terminal à la racine du TP et lancez la commande `git pull` 
 
 
 
