@@ -34,8 +34,19 @@ Jean-Michel, qui travaille à la compta, sait programmer en HTML. Il a donc pré
 
 ## Comment lancer le TP
 
+- Récupérer le code depuis GitHub en ouvrant un terminal et en lançant la commande 
+
+  ````shell
+  git clone https://github.com/arthur-eudeline-cours/javascript-tp-formulaires-avances.git
+  ````
+
 - Ouvrez un terminal dans le dossier `api` et lancez les commandes `npm i `, `npm run build` puis la commande `npm run start:prod`. Vous devriez pouvoir ouvrir http://localhost:3030 dans votre navigateur. Vous devriez voir une page *API Commentaires*. L'API servira plus tard dans le TP, mais ce serveur s'occupe aussi de fournir certaines images, il doit donc être lancé.
+
 - Ouvrez un terminal à la racine du dossier et exécutez la commande `npx serve` et accédez à l'URL http://localhost:3000
+
+
+
+## 
 
 
 
