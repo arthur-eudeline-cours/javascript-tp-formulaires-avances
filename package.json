@@ -1,6 +1,0 @@
-{
-  "scripts": {
-    "setup" : "(cd ./api && npm run build)",
-    "start" : "npx serve & (cd ./api && npm run start:prod)"
-  }
-}

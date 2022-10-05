@@ -34,7 +34,7 @@ Jean-Michel, qui travaille à la compta, sait programmer en HTML. Il a donc pré
 
 ## Comment lancer le TP
 
-- Ouvrez un terminal dans le dossier `api` et lancez les commandes `npm i `, `npm run build` puis la commande `npm run start:prod`. Vous devriez pouvoir ouvrir http://localhost:3030 dans votre navigateur. Vous devriez voir *Hello World!*. L'API servira plus tard dans le TP, mais ce serveur s'occupe aussi de fournir certaines images, il doit donc être lancé.
+- Ouvrez un terminal dans le dossier `api` et lancez les commandes `npm i `, `npm run build` puis la commande `npm run start:prod`. Vous devriez pouvoir ouvrir http://localhost:3030 dans votre navigateur. Vous devriez voir une page *API Commentaires*. L'API servira plus tard dans le TP, mais ce serveur s'occupe aussi de fournir certaines images, il doit donc être lancé.
 - Ouvrez un terminal à la racine du dossier et exécutez la commande `npx serve` et accédez à l'URL http://localhost:3000
 
 
@@ -68,7 +68,7 @@ Jean-Michel, qui travaille à la compta, sait programmer en HTML. Il a donc pré
 
 
    ![Aperçu attendu du champ de note](https://github.com/arthur-eudeline-cours/javascript-tp-formulaires-avances/blob/main/field-screenshot.png?raw=true)
-   
+
    4. Pour le champ `rating`, vous **implémenterez un champ avec 5 icônes d'étoiles**, lorsque l'utilisateur cliquera sur l'une d'elle, cela attribuera une note entre 1 et 5 et remplira l'étoile sélectionnée et les étoiles précédentes. (Vous pourriez le faire uniquement en CSS si vous étiez énervé, mais pour s'entrainer à manipuler le DOM, vous le ferez en JS).
 
    > Expression régulière à utiliser pour valider le pseudonyme `/^[a-zA-Z]+$/`, pour voir comment elle fonctionne, insérez-la sur le site [Regxr](https://regexr.com/).
@@ -115,15 +115,40 @@ Jean-Michel, qui travaille à la compta, sait programmer en HTML. Il a donc pré
 
 
 
-5. À présent que le système est implémenté côté client, il est temps de le faire **communiquer avec un serveur !** 
+5. À présent que le système est implémenté côté client, il est temps de le faire **communiquer avec un serveur !** Ce sujet étant nouveau pour vous, je vous recommande vivement de lire l'aide sous cette question.
 
-   1. À la soumission du formulaire, **vous enverrez les données saisies dans le formulaire au serveur au format JSON via une requête HTTP POST**. Vous afficherez un **indicateur de chargement** le temps que la requête soit complétée et, une fois que le serveur aura répondu, vous **ajouterez le commentaire fournit à la liste des commentaires publiés**.
-   1. Essayez de transmettre une note de 2.5 au serveur, ou de réutiliser un email déjà soumis. Notre système côté client autorise tout nombre compris entre 1 et 5, mais le serveur exige quant à lui un entier. Ce dernier s'assure aussi qu'un utilisateur n'écrit qu'un seul commentaire. Le retour serveur indique quels champs sont en erreur. **Implémentez l'affichage des messages d'erreurs retournés par le serveur.** 
-   1. Remarquez que le serveur vous fournit une information supplémentaire, la date de publication du commentaire dans un format ISO. **Vous afficherez cette date au format français et relatif ("il y a 1j", "le 20/09/2022") dans chaque commentaire.**
-   1. Lorsque vous rafraichissez la page, vous perdez les commentaires que vous avez ajoutés. Pourtant, depuis que vous les transmettez au serveur, ils sont sauvegardés en base de données ! **Effectuez une requête AJAX pour charger les commentaires déjà publiés sur votre page.** 
-   1. (*BONUS*) Remarquez le retour du listing des commentaires affiche des données liée à la pagination des commentaires, eh oui si on affichait directement tous les commentaires présents en base de données, il se pourrait que le navigateur rame un peu. Pour contrer ça, on met en place des systèmes de pagination ou d'*infinite scrolling*. **Ajoutez un bouton à la fin de la liste des commentaires pour lister plus de commentaires**.
+   1. Première étape, **comprendre comment communiquer avec le serveur et ce qu'il vous est possible de faire**. Rendez-vous sur http://localhost:3030 pour y trouver une documentation OpenAPI Swagger. *Pro tips de gamer, ne restez pas sur les onglets "Example Value", allez plutôt sur les onglets "Schema"*. 
+      Pour observer les requêtes que vous qui partent de votre navigateur à destination de l'API, utilisez les devtools du navigateur onglet *network* et filtrez vos requêtes sur *Fetch/XHR*. Lorsque vous cliquez sur une requête, focalisez vous sur les onglets *Preview* et *Payload* (si vous avez vos devtools en français, je vous recommande de les passer en anglais).
+   2. À la soumission du formulaire, **vous enverrez les données saisies dans le formulaire au serveur au format JSON via une requête HTTP POST**. Vous afficherez un **indicateur de chargement** le temps que la requête soit complétée et, une fois que le serveur aura répondu, vous **ajouterez le commentaire fournit à la liste des commentaires publiés**.
+   3. Essayez de transmettre une note de 2.5 au serveur, ou de réutiliser un email déjà soumis. Notre système côté client autorise tout nombre compris entre 1 et 5, mais le serveur exige quant à lui un entier. Ce dernier s'assure aussi qu'un utilisateur n'écrit qu'un seul commentaire. Le retour serveur indique quels champs sont en erreur. **Implémentez l'affichage des messages d'erreurs retournés par le serveur.** 
+   4. Remarquez que le serveur vous fournit une information supplémentaire, la date de publication du commentaire dans un format ISO. **Vous afficherez cette date au format français et relatif ("il y a 1j", "le 20/09/2022") dans chaque commentaire.**
+   5. Lorsque vous rafraichissez la page, vous perdez les commentaires que vous avez ajoutés. Pourtant, depuis que vous les transmettez au serveur, ils sont sauvegardés en base de données ! **Effectuez une requête AJAX pour charger les commentaires déjà publiés sur votre page.** 
+   6. (*BONUS*) Remarquez le retour du listing des commentaires affiche des données liée à la pagination des commentaires, eh oui si on affichait directement tous les commentaires présents en base de données, il se pourrait que le navigateur rame un peu. Pour contrer ça, on met en place des systèmes de pagination ou d'*infinite scrolling*. **Ajoutez un bouton à la fin de la liste des commentaires pour lister plus de commentaires**. Pour se faire, reportez vous à la documentation OpenAPI du projet.
 
+   > **Qu'est-ce qu'une API Rest ?** Une API Rest est un moyen de faire communiquer deux programmes disctint via l'utilisation de requêtes HTTP. Pour faire simple, on va envoyer des requêtes spécifiques à un serveur qui nous répondra en JSON. 
+   >
+   > **Quelques notions à savoir**
+   >
+   > - **Codes HTTP**
+   >   - 2xx → tout est OK
+   >     - 200 : la requête est OK
+   >     - 201 : la ressource a été créée (c'est ce que devra vous répondre le serveur à la création d'un commentaire)
+   >   - 4xx → y a un problème dans l'interaction que fait le client avec le serveur
+   >     - 400 : la requête transmise contient des erreurs 
+   >     - 404 : la ressource n'existe pas
+   >   - 5xx → il y a un problème au niveau du serveur ou l'application est en erreur
+   >     - 500 : une erreur inconnue est survenue (souvent c'est l'application côté serveur qui plante)
+   > - **Méthodes HTTP** : quand on fait une requête HTTP, il y a plusieurs méthodes `GET` et  `POST` (ça devrait vous évoquer quelque chose), mais aussi `PUT`, `PATCH`, `DELETE`, ... Chaque méthode aura des actions différentes en fonction de l'URL sur laquelle elle est envoyée.
+   >   - `GET` lecture, si on fait `GET http://localhost:3030/comment` on listera tous les commentaires, si on fait `GET http://localhost:3030/comment/52`, on récupérera le commentaire avec l'ID 52.
+   >   - `POST` création, si on envoie des données à `POST http://localhost:3030/comment` on va créer un commentaire
+   >   - `PUT` & `PATCH` modification : 
+   >     - `PUT` on remplacera l'intégralité des valeurs d'une ressource avec celles transmises
+   >     - `PATCH` on ne remplacera que les champs transmis sur la ressource (par exemple que le contenu d'un commentaire)
+   >   - `DELETE` suppression d'une ressource
+   >
    > **URL de l'API Rest**
+   >
+   > **⚠️ ATTENTION : n'utilisez pas https pour communiquer avec l'API en local**.
    >
    > - `POST http://localhost:3030/comment/` : créer un nouveau commentaire
    > - `GET http://localhost:3030/comment/` : liste les commentaires

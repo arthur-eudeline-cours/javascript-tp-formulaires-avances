@@ -1,4 +1,11 @@
-import {ArgumentMetadata, BadRequestException, Injectable, PipeTransform, UnauthorizedException} from '@nestjs/common';
+import {
+  ArgumentMetadata,
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+  PipeTransform,
+  UnauthorizedException
+} from '@nestjs/common';
 import fetch from 'node-fetch';
 import FormData = require("form-data");
 
@@ -11,7 +18,18 @@ export class ReCaptchaPipe implements PipeTransform {
   }
   
   
-  async verifyRecaptchaToken (token: string): Promise<true | never> {
+  async verifyRecaptchaToken (token: string, key:string): Promise<true | never> {
+    
+    if (!process.env['RECAPTCHA_SECRET_KEY']) {
+      throw new InternalServerErrorException({
+        statusCode: 500,
+        message: [
+          `You forgot to set RECAPTCHA_SECRET_KEY key in your .env file at the project root. If you have not .env file, just copy and rename .env.sample to .env and set the value !`
+        ],
+        error: "Internal Server Error"
+      })
+    }
+    
     const formData = new FormData();
     formData.append("secret", process.env['RECAPTCHA_SECRET_KEY']);
     formData.append("response", token);
@@ -27,7 +45,7 @@ export class ReCaptchaPipe implements PipeTransform {
       throw new UnauthorizedException({
         statusCode: 401,
         message: [
-          "you have failed your the reCAPTCHA challenge"
+          `${key} : you have failed your the reCAPTCHA challenge`
         ],
         error: "unauthorized"
       });
@@ -38,16 +56,16 @@ export class ReCaptchaPipe implements PipeTransform {
   
   async transform (value: any, metadata: ArgumentMetadata) {
     if ("g-recaptcha-response" in value) {
-      await this.verifyRecaptchaToken(value["g-recaptcha-response"]);
+      await this.verifyRecaptchaToken(value["g-recaptcha-response"], "g-recaptcha-response");
       delete(value["g-recaptcha-response"]);
     } else if ("grecaptcha" in value) {
-      await this.verifyRecaptchaToken(value["grecaptcha"]);
+      await this.verifyRecaptchaToken(value["grecaptcha"], "grecaptcha");
       delete(value["grecaptcha"]);
     } else if (this.required) {
       throw new BadRequestException({
         statusCode: 400,
         message: [
-          "reCAPTCHA is required"
+          "'grecaptcha' or 'g-recaptcha-response' are missing"
         ],
         error: "bad request"
       })
