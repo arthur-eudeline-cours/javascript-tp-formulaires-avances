@@ -55,20 +55,9 @@ export class ReCaptchaPipe implements PipeTransform {
   
   
   async transform (value: any, metadata: ArgumentMetadata) {
-    if ("g-recaptcha-response" in value) {
-      await this.verifyRecaptchaToken(value["g-recaptcha-response"], "g-recaptcha-response");
-      delete(value["g-recaptcha-response"]);
-    } else if ("grecaptcha" in value) {
+    if ("grecaptcha" in value) {
       await this.verifyRecaptchaToken(value["grecaptcha"], "grecaptcha");
       delete(value["grecaptcha"]);
-    } else if (this.required) {
-      throw new BadRequestException({
-        statusCode: 400,
-        message: [
-          "'grecaptcha' or 'g-recaptcha-response' are missing"
-        ],
-        error: "bad request"
-      })
     }
     
     return value;
