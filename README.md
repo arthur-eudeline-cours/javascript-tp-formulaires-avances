@@ -56,7 +56,7 @@ Ouvrez un terminal à la racine du TP et lancez la commande `git pull`
 
 1. Récupérez le fichier de base HTML et **créez ce formulaire en HTML** à partir des spécifications ci-dessus.
 
-2. À la soumission du formulaire, **ajoutez un nouveau commentaire dans le DOM à partir des données extraites du formulaire et ajoutez-le à la liste**. Vous viderez également tous les champs du formulaire. Ne vous occupez pas de la validation pour la moment (c'est la question d'après !).
+2. À la soumission du formulaire, **ajoutez un nouveau commentaire dans le DOM à partir des données extraites du formulaire et ajoutez-le à la liste**. Vous viderez également tous les champs du formulaire. Ne vous occupez pas de la validation pour le moment (c'est la question d'après !).
 
    > **Concepts clés :**
    >
@@ -80,8 +80,6 @@ Ouvrez un terminal à la racine du TP et lancez la commande `git pull`
    2. **Ajoutez un compteur de caractère en bas à droite de la zone de texte** `content` qui indiquera en temps réel le nombre de caractères présent dans le commentaire.
    ![Aperçu attendu du champ de note](https://github.com/arthur-eudeline-cours/javascript-tp-formulaires-avances/blob/main/field-screenshot.png?raw=true)
 
-   4. Pour le champ `rating`, vous **implémenterez un champ avec 5 icônes d'étoiles**, lorsque l'utilisateur cliquera sur l'une d'elle, cela attribuera une note entre 1 et 5 et remplira l'étoile sélectionnée et les étoiles précédentes. (Vous pourriez le faire uniquement en CSS si vous étiez énervé, mais pour s'entrainer à manipuler le DOM, vous le ferez en JS).
-      )
    3. Pour le champ `rating`, vous **implémenterez un champ avec 5 icônes d'étoiles**, lorsque l'utilisateur cliquera sur l'une d'elle, cela attribuera une note entre 1 et 5 et remplira l'étoile sélectionnée et les étoiles précédentes. (Vous pourriez le faire uniquement en CSS si vous étiez énervé, mais pour s'entrainer à manipuler le DOM, vous le ferez en JS).
 
    > Expression régulière à utiliser pour valider le pseudonyme `/^[a-zA-Z]+$/`, pour voir comment elle fonctionne, insérez-la sur le site [Regxr](https://regexr.com/).
@@ -132,19 +130,19 @@ Ouvrez un terminal à la racine du TP et lancez la commande `git pull`
 
    1. Première étape, **comprendre comment communiquer avec le serveur et ce qu'il vous est possible de faire**. Rendez-vous sur http://localhost:3030 pour y trouver une documentation OpenAPI Swagger. 
       ***Pro tips de gamer**, ne restez pas sur les onglets "Example Value", allez plutôt sur les onglets "Schema"*. 
-      Pour observer les requêtes que vous qui partent de votre navigateur à destination de l'API, utilisez les devtools du navigateur onglet *network* et filtrez vos requêtes sur *Fetch/XHR*. Lorsque vous cliquez sur une requête, focalisez vous sur les onglets *Preview* et *Payload* (si vous avez vos devtools en français, je vous recommande de les passer en anglais).
+      Pour observer les requêtes que vous qui partent de votre navigateur à destination de l'API, utilisez les devtools du navigateur onglet *network* et filtrez vos requêtes sur *Fetch/XHR*. Lorsque vous cliquez sur une requête, focalisez-vous sur les onglets *Preview* et *Payload* (si vous avez vos devtools en français, je vous recommande de les passer en anglais).
    2. À la soumission du formulaire, **vous enverrez les données saisies dans le formulaire au serveur au format JSON via une requête HTTP POST**. Vous afficherez un **indicateur de chargement** le temps que la requête soit complétée et, une fois que le serveur aura répondu, vous **ajouterez le commentaire fournit à la liste des commentaires publiés**.
-   3. Ajoutez maintenant le token généré par la validation du reCAPTCHA à votre requête sous la clé `grecaptcha`. Transmettez le d'abord vide, le serveur devrait vous retourner une erreur. Vous pouvez maintenant transmettre le token avec sa vraie valeur au serveur. 
-      ⚠️ **ATTENTION** : assurez-vous d'avoir ajouté la clé privé du reCAPTCHA dans un fichier `.env` à la racine du projet. Basez-vous sur `.env.sample`, dont vous ferez une copie que vous renommerez en `.env`. **Redémarrez le serveur API pour que les changements soient pris en compte.** Pour ce faire, stoppez le processus dans le terminal de l'API (en faisant CTRL + C dans le terminal, puis relancez-le avec la commande `npm run start:prod` dans le dossier `api`).
+   3. Ajoutez maintenant le token généré par la validation du reCAPTCHA à votre requête sous la clé `grecaptcha`. Transmettez-le d'abord vide, le serveur devrait vous retourner une erreur. Vous pouvez maintenant transmettre le token avec sa vraie valeur au serveur. 
+      ⚠️ **ATTENTION** : assurez-vous d'avoir ajouté la clé privée du reCAPTCHA dans un fichier `.env` à la racine du projet. Basez-vous sur `.env.sample`, dont vous ferez une copie que vous renommerez en `.env`. **Redémarrez le serveur API pour que les changements soient pris en compte.** Pour ce faire, stoppez le processus dans le terminal de l'API (en faisant CTRL + C dans le terminal, puis relancez-le avec la commande `npm run start:prod` dans le dossier `api`).
    4. Essayez de transmettre une note de 2.5 au serveur, ou de réutiliser un email déjà soumis. Notre système côté client autorise tout nombre compris entre 1 et 5, mais le serveur exige quant à lui un entier. Ce dernier s'assure aussi qu'un utilisateur n'écrit qu'un seul commentaire. Le retour serveur indique quels champs sont en erreur. **Implémentez l'affichage des messages d'erreurs retournés par le serveur.** 
    5. Remarquez que le serveur vous fournit une information supplémentaire, la date de publication du commentaire dans un format ISO. **Vous afficherez cette date au format français et relatif ("il y a 1j", "le 20/09/2022") dans chaque commentaire.**
       - Si le commentaire a été publié il y a moins d'une seconde, vous afficherez *Publié à l'instant*
       - Si le commentaire a été publié il a y moins de 7j, vous afficherez *Publié il y a 3min*, *Publié il y a 2h*, *Publié il y a 3j*,
       - Si le commentaire a été publié il y a plus de 7j, vous afficherez *Publié le JJ/MM/AAAA* 
    6. Lorsque vous rafraichissez la page, vous perdez les commentaires que vous avez ajoutés. Pourtant, depuis que vous les transmettez au serveur, ils sont sauvegardés en base de données ! **Effectuez une requête HTTP pour charger les commentaires déjà publiés sur votre page.** 
-   7. (*BONUS*) Remarquez le retour du listing des commentaires affiche des données liée à la pagination des commentaires, eh oui si on affichait directement tous les commentaires présents en base de données, il se pourrait que le navigateur rame un peu. Pour contrer ça, on met en place des systèmes de pagination ou d'*infinite scrolling*. **Ajoutez un bouton à la fin de la liste des commentaires pour lister plus de commentaires**. Pour se faire, reportez vous à la documentation OpenAPI du projet.
+   7. (*BONUS*) Remarquez le retour du listing des commentaires affiche des données liée à la pagination des commentaires, eh oui si on affichait directement tous les commentaires présents en base de données, il se pourrait que le navigateur rame un peu. Pour contrer ça, on met en place des systèmes de pagination ou d'*infinite scrolling*. **Ajoutez un bouton à la fin de la liste des commentaires pour lister plus de commentaires**. Pour ce faire, reportez vous à la documentation OpenAPI du projet.
 
-   > **Qu'est-ce qu'une API Rest ?** Une API Rest est un moyen de faire communiquer deux programmes disctint via l'utilisation de requêtes HTTP. Pour faire simple, on va envoyer des requêtes spécifiques à un serveur qui nous répondra en JSON. 
+   > **Qu'est-ce qu'une API Rest ?** Une API Rest est un moyen de faire communiquer deux programmes distincts via l'utilisation de requêtes HTTP. Pour faire simple, on va envoyer des requêtes spécifiques à un serveur qui nous répondra en JSON. 
    >
    > **Quelques notions à savoir**
    >
@@ -181,9 +179,9 @@ Ouvrez un terminal à la racine du TP et lancez la commande `git pull`
 
    
 
-6. Le client étant satisfait de votre travail avec les commentaires, il vous demande une autre amélioration de la page produit : **transformez la gallerie d'images du produit en carrousel**. Pour cela, vous utiliserez la librairie Swiper.js, en utilisant un CDN (et non pas NPM ! nous verrons ça plus tard, juré craché). 
+6. Le client étant satisfait de votre travail avec les commentaires, il vous demande une autre amélioration de la page produit : **transformez la galerie d'images du produit en carrousel**. Pour cela, vous utiliserez la librairie Swiper.js, en utilisant un CDN (et non pas NPM ! nous verrons ça plus tard, juré craché). 
 
-   1. Vous implémenterez d'abord un **carousel horizontal** de toutes les images produit, et **si l'utilisateur arrive à la dernière image, vous retournerez à la première image**.
+   1. Vous implémenterez d'abord un **caroussel horizontal** de toutes les images produit, et **si l'utilisateur arrive à la dernière image, vous retournerez à la première image**.
    1. Ensuite, vous ajouterez des **flèches de navigation**, pour qu'au clic nous puissions changer d'image.
    1. Par défaut, **le carrousel se lancera de lui-même avec un délai de 5sec** entre chaque image au chargement de la page. Cependant, **si l'utilisateur passe une slide, la lecture automatique s'arrêtera**.
    1. Vous **ajouterez une pagination** au swiper pour indiquer à l'utilisateur le nombre d'images qu'il y a.
